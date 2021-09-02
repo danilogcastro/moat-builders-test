@@ -1,1 +1,9 @@
 <h1><%= @artist.name %></h1>
+
+<h3>Follow <%= @artist.name %> on Twitter: <%= @artist.twitter %></h3>
+
+<h4><%= @artist.name %>'s albums:</h4>
+
+<% @albums.each do |album| %>
+  <p><%= album.name %> - <%= album.year %> | <%= link_to 'Edit', edit_album_path(album) %> - <%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: "Are you sure you want to delete this album?"} %></p>
+<% end %>

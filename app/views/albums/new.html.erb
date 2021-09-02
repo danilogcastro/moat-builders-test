@@ -1,0 +1,6 @@
+<%= simple_form_for(@album) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :year %>
+  <%= f.association :artist %>
+  <%= f.submit %>
+<% end %>
