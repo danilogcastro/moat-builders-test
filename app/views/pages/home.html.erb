@@ -1,7 +1,9 @@
 <h1>What would you like to do?</h1>
 
 <%= link_to "See Artists List", artists_path %>
-<%= link_to "Create a New Album", new_album_path %>
+<% if policy(Album).create? %>
+  <%= link_to "Create a New Album", new_album_path %>
+<% end %>
 <% if user_signed_in? %>
   <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 <% else %>

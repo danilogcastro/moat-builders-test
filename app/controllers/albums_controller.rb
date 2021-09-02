@@ -6,10 +6,12 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
+    authorize @album
   end
 
   def create
     @album = Album.new(album_params)
+    authorize @album
     if @album.save
       flash[:notice] = "Album was successfully created"
       redirect_to artist_path(@album.artist)
@@ -20,10 +22,12 @@ class AlbumsController < ApplicationController
 
   def edit
     @album = Album.find(params[:id])
+    authorize @album
   end
 
   def update
     @album = Album.find(params[:id])
+    authorize @album
     if @album.update(album_params)
       flash[:notice] = "Album was successfully updated"
       redirect_to artist_path(@album.artist)
@@ -34,6 +38,7 @@ class AlbumsController < ApplicationController
 
   def destroy
     @album = Album.find(params[:id])
+    authorize @album
     @album.destroy
 
     flash[:notice] = "Album was successfully destroyed"

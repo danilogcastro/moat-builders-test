@@ -5,5 +5,11 @@
 <h4><%= @artist.name %>'s albums:</h4>
 
 <% @albums.each do |album| %>
-  <p><%= album.name %> - <%= album.year %> | <%= link_to 'Edit', edit_album_path(album) %> - <%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: "Are you sure you want to delete this album?"} %></p>
+  <p><%= album.name %> - <%= album.year %></p>
+  <% if policy(album).edit? %>
+    <p><%= link_to 'Edit', edit_album_path(album) %></p>
+  <% end %>
+  <% if policy(album).destroy? %>
+    <p><%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: "Are you sure you want to delete this album?"} %></p>
+  <% end %>
 <% end %>
