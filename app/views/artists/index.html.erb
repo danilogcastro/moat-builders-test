@@ -1,5 +1,7 @@
 <h1>Artists</h1>
 
+<%= link_to "Back To Home", root_path %>
+
 <% @artists.each do |artist| %>
   <div>
     <h3><%= link_to artist.name, artist_path(artist) %></h3>
