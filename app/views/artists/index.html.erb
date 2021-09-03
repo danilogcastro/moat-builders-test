@@ -1,6 +1,9 @@
 <h1 class="my-4">Artists</h1>
 
 <%= link_to "Back To Home", root_path, class: "btn btn-primary my-4" %>
+<% if policy(Album).create? %>
+  <%= link_to "Create a New Album", new_album_path, class: "btn btn-success" %>
+<% end %>
 
 <div class="artistsList my-4 row text-center">
   <% @artists.each do |artist| %>
