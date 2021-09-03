@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :set_album, only: [:edit, :update, :destroy]
+
   def index
     @artist = Artist.find(params[:artist_id])
     @albums = Album.where(artist: @artist)
@@ -21,12 +23,10 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-    @album = Album.find(params[:id])
     authorize @album
   end
 
   def update
-    @album = Album.find(params[:id])
     authorize @album
     if @album.update(album_params)
       flash[:notice] = "Album was successfully updated"
@@ -37,7 +37,6 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
-    @album = Album.find(params[:id])
     authorize @album
     @album.destroy
 
@@ -46,6 +45,10 @@ class AlbumsController < ApplicationController
   end
 
   private
+
+  def set_album
+    @album = Album.find(params[:id])
+  end
 
   def album_params
     params.require(:album).permit(:name, :year, :artist_id)

@@ -1,6 +1,5 @@
-<%= simple_form_for(@album) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :year %>
-  <%= f.association :artist %>
-  <%= f.submit %>
-<% end %>
+<h1 class="my4">Create a new album</h1>
+
+<%= render "form", album: @album %>
+
+<%= link_to "Back to All Artists", artists_path, class: "btn btn-primary my-4" %>
