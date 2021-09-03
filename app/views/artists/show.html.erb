@@ -6,17 +6,19 @@
 
 <h4 class="my-4"><%= @artist.name %>'s albums:</h4>
 
-<% @albums.each do |album| %>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title"><%= album.name %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= album.year %></h6>
-      <% if policy(album).edit? %>
-        <%= link_to 'Edit', edit_album_path(album) %>
-      <% end %>
-      <% if policy(album).destroy? %>
-        <%= link_to '| Delete', album_path(album), method: :delete, data: { confirm: "Are you sure you want to delete this album?"} %>
-      <% end %>
+<div class="artists-albums row">
+  <% @albums.each do |album| %>
+    <div class="card col-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= album.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= album.year %></h6>
+        <% if policy(album).edit? %>
+          <%= link_to 'Edit', edit_album_path(album) %>
+        <% end %>
+        <% if policy(album).destroy? %>
+          <%= link_to '| Delete', album_path(album), method: :delete, data: { confirm: "Are you sure you want to delete this album?"} %>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
