@@ -1,11 +1,13 @@
-<h1>What would you like to do?</h1>
+<h1 class="my-4">What would you like to do?</h1>
 
-<%= link_to "See Artists List", artists_path %>
-<% if policy(Album).create? %>
-  <%= link_to "Create a New Album", new_album_path %>
-<% end %>
-<% if user_signed_in? %>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Login or Sign Up!", new_user_session_path %>
-<% end %>
+<div class="options my-4">
+  <%= link_to "See Artists List", artists_path, class: "btn btn-info" %>
+  <% if policy(Album).create? %>
+    <%= link_to "Create a New Album", new_album_path, class: "btn btn-success" %>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
+  <% else %>
+    <%= link_to "Login or Sign Up!", new_user_session_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
